@@ -17,7 +17,7 @@ const initialAnimals = [
   { name: 'Lion', image: 'https://i.postimg.cc/T1Br5mSh/cartoon-lion-roaring-on-white-600nw-2423745167.webp' },
   { name: 'Elephant', image: 'https://i.postimg.cc/rpFXPtnD/istockphoto-1178274331-612x612.jpg' },
   { name: 'Giraffe', image: 'https://i.postimg.cc/KYsVpp3W/hand-drawn-cartoon-giraffe-illustration-23-2150368576.avif' },
-  { name: 'Zebra', image: 'https://via.placeholder.com/150/FFFF33/000000?text=Zebra' },
+  { name: 'Zebra', image: 'https://i.postimg.cc/W4tYZmYw/cute-zebra-cartoon-on-white-background-free-vector.jpg' },
   { name: 'Monkey', image: 'https://via.placeholder.com/150/FF33FF/FFFFFF?text=Monkey' },
   { name: 'Tiger', image: 'https://via.placeholder.com/150/33FFFF/000000?text=Tiger' },
   { name: 'Panda', image: 'https://via.placeholder.com/150/FF8C33/FFFFFF?text=Panda' },
