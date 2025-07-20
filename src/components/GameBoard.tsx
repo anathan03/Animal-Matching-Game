@@ -21,7 +21,7 @@ const initialAnimals = [
   { name: 'Monkey', image: 'https://i.postimg.cc/HWbZbkzR/cute-cartoon-monkey-swinging-branch-600nw-2550712827.webp' },
   { name: 'Tiger', image: 'https://i.postimg.cc/sgHw3QfQ/c-HJpdm-F0-ZS9sci9pb-WFn-ZXMvd2-Vic2l0-ZS8y-MDIy-LTA0-L2pv-Yj-Y4-Ni0y-Nzktdi5qc-Gc.webp' },
   { name: 'Panda', image: 'https://i.postimg.cc/7hqg3wYr/cute-panda-cartoon-isolated-on-600nw-2371081785.webp' },
-  { name: 'Kangaroo', image: 'https://via.placeholder.com/150/8C33FF/FFFFFF?text=Kangaroo' },
+  { name: 'Kangaroo', image: 'https://i.postimg.cc/TYwbfkK0/hand-painted-kangaroo-design-1152-91.avif' },
   { name: 'Penguin', image: 'https://via.placeholder.com/150/33FF8C/000000?text=Penguin' },
   { name: 'Bear', image: 'https://via.placeholder.com/150/FF338C/FFFFFF?text=Bear' },
   { name: 'Dolphin', image: 'https://via.placeholder.com/150/8CFF33/000000?text=Dolphin' },
