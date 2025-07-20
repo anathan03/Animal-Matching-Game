@@ -15,7 +15,7 @@ interface AnimalCard {
 
 const initialAnimals = [
   { name: 'Lion', image: 'https://i.postimg.cc/T1Br5mSh/cartoon-lion-roaring-on-white-600nw-2423745167.webp' },
-  { name: 'Elephant', image: 'https://i.postimg.cc/Wz9s5wjb/ele-cartoon.jpg' },
+  { name: 'Elephant', image: 'https://i.postimg.cc/fT6GDrHQ/ele-cartoon.jpg' },
   { name: 'Giraffe', image: 'https://via.placeholder.com/150/3357FF/FFFFFF?text=Giraffe' },
   { name: 'Zebra', image: 'https://via.placeholder.com/150/FFFF33/000000?text=Zebra' },
   { name: 'Monkey', image: 'https://via.placeholder.com/150/FF33FF/FFFFFF?text=Monkey' },
