@@ -25,7 +25,7 @@ const initialAnimals = [
   { name: 'Penguin', image: 'https://i.postimg.cc/htVtBx1M/penguin-flat-vector-illustration-on-600nw-2459383763.webp' },
   { name: 'Bear', image: 'https://via.placeholder.com/150/FF338C/FFFFFF?text=Bear' },
   { name: 'Dolphin', image: 'https://i.postimg.cc/d3X3pWny/cute-dolphin-cartoon-jumping-on-600nw-2266715243.webp' },
-  { name: 'Owl', image: 'https://via.placeholder.com/150/338CFF/FFFFFF?text=Owl' },
+  { name: 'Owl', image: 'https://i.postimg.cc/cJZHpt7X/owls-typically-have-round-faces-600nw-2456186377.webp' },
   { name: 'Fox', image: 'https://via.placeholder.com/150/FFD700/000000?text=Fox' },
   { name: 'Wolf', image: 'https://via.placeholder.com/150/C0C0C0/000000?text=Wolf' },
   { name: 'Rabbit', image: 'https://via.placeholder.com/150/FFB6C1/000000?text=Rabbit' },
