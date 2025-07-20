@@ -28,7 +28,7 @@ const initialAnimals = [
   { name: 'Owl', image: 'https://i.postimg.cc/cJZHpt7X/owls-typically-have-round-faces-600nw-2456186377.webp' },
   { name: 'Fox', image: 'https://i.postimg.cc/CxCMsLyD/bg-f8f8f8-flat-750x-075-f-pad-750x1000-f8f8f8-u8.jpg' },
   { name: 'Wolf', image: 'https://i.postimg.cc/1zJ9bC33/360-F-364156979-yj0-TBHYVe-IH12f-VNer-Guv-ZBku-YRhq3-Wf.jpg' },
-  { name: 'Rabbit', image: 'https://via.placeholder.com/150/FFB6C1/000000?text=Rabbit' },
+  { name: 'Rabbit', image: 'https://i.postimg.cc/CL9XLWKQ/7baf775d331f1d01b021e52acf1811e0.jpg' },
 ];
 
 const GameBoard: React.FC = () => {
