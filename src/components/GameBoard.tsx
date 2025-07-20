@@ -1,0 +1,162 @@
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import Card from './Card';
+import { useGameSound } from '@/hooks/useSound';
+import { Button } from '@/components/ui/button';
+import { showSuccess } from '@/utils/toast';
+
+interface AnimalCard {
+  id: string;
+  animal: string;
+  image: string;
+  isFlipped: boolean;
+  isMatched: boolean;
+}
+
+const initialAnimals = [
+  { name: 'Lion', image: 'https://via.placeholder.com/150/FF5733/FFFFFF?text=Lion' },
+  { name: 'Elephant', image: 'https://via.placeholder.com/150/33FF57/FFFFFF?text=Elephant' },
+  { name: 'Giraffe', image: 'https://via.placeholder.com/150/3357FF/FFFFFF?text=Giraffe' },
+  { name: 'Zebra', image: 'https://via.placeholder.com/150/FFFF33/000000?text=Zebra' },
+  { name: 'Monkey', image: 'https://via.placeholder.com/150/FF33FF/FFFFFF?text=Monkey' },
+  { name: 'Tiger', image: 'https://via.placeholder.com/150/33FFFF/000000?text=Tiger' },
+  { name: 'Panda', image: 'https://via.placeholder.com/150/FF8C33/FFFFFF?text=Panda' },
+  { name: 'Kangaroo', image: 'https://via.placeholder.com/150/8C33FF/FFFFFF?text=Kangaroo' },
+  { name: 'Penguin', image: 'https://via.placeholder.com/150/33FF8C/000000?text=Penguin' },
+  { name: 'Bear', image: 'https://via.placeholder.com/150/FF338C/FFFFFF?text=Bear' },
+  { name: 'Dolphin', image: 'https://via.placeholder.com/150/8CFF33/000000?text=Dolphin' },
+  { name: 'Owl', image: 'https://via.placeholder.com/150/338CFF/FFFFFF?text=Owl' },
+  { name: 'Fox', image: 'https://via.placeholder.com/150/FFD700/000000?text=Fox' },
+  { name: 'Wolf', image: 'https://via.placeholder.com/150/C0C0C0/000000?text=Wolf' },
+  { name: 'Rabbit', image: 'https://via.placeholder.com/150/FFB6C1/000000?text=Rabbit' },
+];
+
+const GameBoard: React.FC = () => {
+  const [cards, setCards] = useState<AnimalCard[]>([]);
+  const [flippedCards, setFlippedCards] = useState<string[]>([]);
+  const [matches, setMatches] = useState(0);
+  const [score, setScore] = useState(0);
+  const [gameWon, setGameWon] = useState(false);
+  const lockBoard = useRef(false);
+  const { playCorrect } = useGameSound();
+
+  const initializeGame = useCallback(() => {
+    const gameCards: AnimalCard[] = [];
+    initialAnimals.forEach(animal => {
+      gameCards.push({
+        id: uuidv4(),
+        animal: animal.name,
+        image: animal.image,
+        isFlipped: false,
+        isMatched: false,
+      });
+      gameCards.push({
+        id: uuidv4(),
+        animal: animal.name,
+        image: animal.image,
+        isFlipped: false,
+        isMatched: false,
+      });
+    });
+
+    // Shuffle cards
+    const shuffledCards = gameCards.sort(() => Math.random() - 0.5);
+    setCards(shuffledCards);
+    setFlippedCards([]);
+    setMatches(0);
+    setScore(0);
+    setGameWon(false);
+    lockBoard.current = false;
+  }, []);
+
+  useEffect(() => {
+    initializeGame();
+  }, [initializeGame]);
+
+  useEffect(() => {
+    if (flippedCards.length === 2) {
+      lockBoard.current = true;
+      const [firstCardId, secondCardId] = flippedCards;
+      const firstCard = cards.find(card => card.id === firstCardId);
+      const secondCard = cards.find(card => card.id === secondCardId);
+
+      if (firstCard && secondCard && firstCard.animal === secondCard.animal) {
+        // Match found
+        setCards(prevCards =>
+          prevCards.map(card =>
+            card.id === firstCardId || card.id === secondCardId
+              ? { ...card, isMatched: true }
+              : card
+          )
+        );
+        setMatches(prevMatches => prevMatches + 1);
+        setScore(prevScore => prevScore + 10); // Example score increment
+        playCorrect();
+        setFlippedCards([]);
+        lockBoard.current = false;
+      } else {
+        // No match, flip back after 1 second
+        setTimeout(() => {
+          setCards(prevCards =>
+            prevCards.map(card =>
+              card.id === firstCardId || card.id === secondCardId
+                ? { ...card, isFlipped: false }
+                : card
+            )
+          );
+          setFlippedCards([]);
+          lockBoard.current = false;
+        }, 1000);
+      }
+    }
+  }, [flippedCards, cards, playCorrect]);
+
+  useEffect(() => {
+    if (matches > 0 && matches === initialAnimals.length) {
+      setGameWon(true);
+      showSuccess("You won! Congratulations!");
+    }
+  }, [matches]);
+
+  const handleCardClick = (id: string) => {
+    if (lockBoard.current) return;
+
+    setCards(prevCards =>
+      prevCards.map(card =>
+        card.id === id ? { ...card, isFlipped: true } : card
+      )
+    );
+    setFlippedCards(prevFlipped => [...prevFlipped, id]);
+  };
+
+  return (
+    <div className="flex flex-col items-center p-4">
+      <h1 className="text-4xl font-bold mb-6 text-gray-800 dark:text-gray-100">Animal Memory Game</h1>
+      <div className="mb-4 text-lg font-medium text-gray-700 dark:text-gray-200">
+        Score: {score} | Matches: {matches}/{initialAnimals.length}
+      </div>
+      {gameWon && (
+        <div className="text-green-600 dark:text-green-400 text-3xl font-bold mb-6">
+          You won!
+        </div>
+      )}
+      <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-3 sm:gap-4 md:gap-5 lg:gap-6 max-w-6xl mx-auto">
+        {cards.map(card => (
+          <Card
+            key={card.id}
+            id={card.id}
+            image={card.image}
+            isFlipped={card.isFlipped}
+            isMatched={card.isMatched}
+            onClick={handleCardClick}
+          />
+        ))}
+      </div>
+      <Button onClick={initializeGame} className="mt-8 px-6 py-3 text-lg">
+        Reset Game
+      </Button>
+    </div>
+  );
+};
+
+export default GameBoard;
