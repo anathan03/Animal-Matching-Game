@@ -23,7 +23,7 @@ const initialAnimals = [
   { name: 'Panda', image: 'https://i.postimg.cc/7hqg3wYr/cute-panda-cartoon-isolated-on-600nw-2371081785.webp' },
   { name: 'Kangaroo', image: 'https://i.postimg.cc/TYwbfkK0/hand-painted-kangaroo-design-1152-91.avif' },
   { name: 'Penguin', image: 'https://i.postimg.cc/htVtBx1M/penguin-flat-vector-illustration-on-600nw-2459383763.webp' },
-  { name: 'Bear', image: 'https://via.placeholder.com/150/FF338C/FFFFFF?text=Bear' },
+  { name: 'Bear', image: 'https://i.postimg.cc/G2Szgy85/cute-cartoon-bear-illustration-free-vector-1.jpg' },
   { name: 'Dolphin', image: 'https://i.postimg.cc/d3X3pWny/cute-dolphin-cartoon-jumping-on-600nw-2266715243.webp' },
   { name: 'Owl', image: 'https://i.postimg.cc/cJZHpt7X/owls-typically-have-round-faces-600nw-2456186377.webp' },
   { name: 'Fox', image: 'https://i.postimg.cc/CxCMsLyD/bg-f8f8f8-flat-750x-075-f-pad-750x1000-f8f8f8-u8.jpg' },
